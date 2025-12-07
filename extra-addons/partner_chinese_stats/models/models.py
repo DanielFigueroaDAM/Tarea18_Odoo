@@ -7,7 +7,7 @@ class partner_chinese_stats(models.Model):
     _inherit = 'res.partner'
 
     f_nac = fields.Date(string="Fecha de Nacimiento")
-    edad = fields.Integer(string="Edad",readonly=True ,compute='_compute_edad',store=True)
+    edad = fields.Integer(string="Edad",readonly=True ,compute='_calcular_edad',store=True)
     signo_chino = fields.Char(string="Signo Chino", readonly=True, compute='_calcular_chinada', store=True)
 
     @api.depends('f_nac')
