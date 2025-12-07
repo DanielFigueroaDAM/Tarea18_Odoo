@@ -2,10 +2,13 @@
 {
     'name': "partner_chinese_stats",
 
-    'summary': "Short (1 phrase/line) summary of the module's purpose",
+    'summary': "Módulo que permite ver el signo del horóscopo chino ",
 
     'description': """
-Long description of module's purpose
+Este módulo extiende el modelo res_partner añadiendo los siguientes 3 campos a los contactos:
+- Fecha de nacimiento
+-Edad (calculada automáticamente a partir de la fecha de nacimiento)
+- Signo del horóscopo chino (calculado automáticamente a partir de la fecha de nacimiento)    
     """,
 
     'author': "My Company",
@@ -18,7 +21,7 @@ Long description of module's purpose
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','contacts'],
 
     # always loaded
     'data': [
