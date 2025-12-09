@@ -14,18 +14,23 @@
             <field name="edad" string="Edad"/>
             <field name="signo_chino" string="Signo del horóscopo Chino"/>
           </group>
+          </page>
       </xpath>
+      </field>
     </record>
 
 
     <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="partner_chinese_stats.action_window">
-      <field name="name">partner_chinese_stats window</field>
-      <field name="res_model">partner_chinese_stats.partner_chinese_stats</field>
-      <field name="view_mode">list,form</field>
+    <record model="ir.ui.view" id="partner_chinese_stats.list">
+      <field name="name">partner_chinese_stats list</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id">base.view_partner_tree</field>
+      <field name="arch" type="xml">
+        <xpath expr="//list/field[@name='complete_name']" position="after">
+          <field name="signo_chino" string="Signo del horóscopo Chino"/>
+        </xpath>
+      </field>
     </record>
--->
 
     <!-- server action to the one above -->
 <!--
