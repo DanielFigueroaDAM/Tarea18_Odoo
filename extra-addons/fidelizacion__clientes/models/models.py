@@ -1,19 +1,27 @@
 # -*- coding: utf-8 -*-
 
-# from odoo import models, fields, api
+# -*- coding: utf-8 -*-
+from odoo import models, fields, api
 
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
 
-# class fidelizacion__clientes(models.Model):
-#     _name = 'fidelizacion__clientes.fidelizacion__clientes'
-#     _description = 'fidelizacion__clientes.fidelizacion__clientes'
+    codigo_socio = fields.Char(string='Código de Socio')
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+    nivel_fidelidad = fields.Char(
+        string='Nivel de Fidelidad',
+        compute='_calcular_nivel_fidelidad',
+        store=True,
+        readonly=True
+    )
+
+    @api.depends('codigo_socio')
+    def _calcular_nivel_fidelidad(self):
+        for record in self:
+            if not record.codigo_socio:
+                record.nivel_fidelidad = "ESTANDAR"
+            elif record.codigo_socio.startswith(('G', 'g')):
+                record.nivel_fidelidad = "GOLD"
+            else:
+                record.nivel_fidelidad = "PREMIUM"
 
