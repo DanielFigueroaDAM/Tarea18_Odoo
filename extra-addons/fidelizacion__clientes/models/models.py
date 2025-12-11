@@ -20,7 +20,7 @@ class ResPartner(models.Model):
         for record in self:
             if not record.codigo_socio:
                 record.nivel_fidelidad = "ESTANDAR"
-            elif record.codigo_socio.startswith(('G', 'g')):
+            elif record.codigo_socio.startswith('G'):
                 record.nivel_fidelidad = "GOLD"
             else:
                 record.nivel_fidelidad = "PREMIUM"
