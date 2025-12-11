@@ -14,7 +14,7 @@
             <field name="edad" string="Edad"/>
             <field name="signo_chino" string="Signo del horóscopo Chino"/>
           </group>
-          </page>
+        </page>
       </xpath>
       </field>
     </record>

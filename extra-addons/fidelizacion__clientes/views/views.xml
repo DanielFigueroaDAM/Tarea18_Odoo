@@ -1,19 +1,38 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="fidelizacion__clientes.list">
-      <field name="name">fidelizacion_Clientes list</field>
+
+    <record model="ir.ui.view" id="fidelizacion__clientes.form">
+      <field name="name">fidelizacion_Clientes form</field>
       <field name="model">fidelizacion__clientes.fidelizacion__clientes</field>
       <field name="arch" type="xml">
-        <list>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </list>
+        <xpath expr="//notebook" position="inside">
+                <page string="membresia">
+                    <group>
+                        <field name="codigo_socio" string="Codigo de socio"/>
+                        <field name="nivel_fidelidad" string="Nivel de fidelidad"/>
+                    </group>
+                </page>
+            </xpath>
       </field>
     </record>
--->
+
+
+    <record model="ir.ui.view" id="fidelizacion__clientes.list">
+      <field name="name">fidelizacion_Clientes list</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_tree"/>
+      <field name="arch" type="xml">
+        <xpath expr="//list/field[@name='complete_name']" position="after">
+          <field name="nivel_fidelidad" string="NIVEL DE FIDELIDAD" decoration-info="nivel_fidelidad in ['PREMIUM','GOLD']"/>
+        </xpath>
+      </field>
+    </record>
+    <!-- Continuar aquí -->
+
+
+
+
 
     <!-- actions opening views on models -->
 <!--
