@@ -5,7 +5,7 @@ class Paciente(models.Model):
     _description = "Gestión de Pacientes"
     _rec_name = "name"
 
-    _name = fields.Char(string="Nombre Completo(Nombre y apellidos)", required=True)
+    name = fields.Char(string="Nombre Completo(Nombre y apellidos)", required=True)
     sintomas = fields.Text(string="Síntomas del paciente", required=True)
 
-    ids_diagnosticos = fields.One2many( "hospital.diagnostico", "paciente_id", string="Diagnósticos Recibidos")
+    ids_diagnosticos = fields.One2many("hospital.diagnostico", "paciente_id", string="Diagnósticos Recibidos")
