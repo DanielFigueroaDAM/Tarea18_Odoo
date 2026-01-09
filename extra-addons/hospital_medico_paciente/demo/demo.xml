@@ -1,30 +1,36 @@
 <odoo>
-    <data>
-<!--
-          <record id="object0" model="hospital_medico_paciente.hospital_medico_paciente">
-            <field name="name">Object 0</field>
-            <field name="value">0</field>
-          </record>
+    <data noupdate="1">
+        <record id="demo_medico_a" model="hospital.medico">
+            <field name="name">Dr. Miguel Salinas</field>
+            <field name="numero_colegiado">4567</field>
+        </record>
 
-          <record id="object1" model="hospital_medico_paciente.hospital_medico_paciente">
-            <field name="name">Object 1</field>
-            <field name="value">10</field>
-          </record>
+        <record id="demo_medico_b" model="hospital.medico">
+            <field name="name">Dra. Laura Pérez</field>
+            <field name="numero_colegiado">890</field>
+        </record>
 
-          <record id="object2" model="hospital_medico_paciente.hospital_medico_paciente">
-            <field name="name">Object 2</field>
-            <field name="value">20</field>
-          </record>
+        <record id="demo_paciente_a" model="hospital.paciente">
+            <field name="name">Carlos Ruiz</field>
+            <field name="sintomas">Dolor de cabeza y náuseas</field>
+        </record>
 
-          <record id="object3" model="hospital_medico_paciente.hospital_medico_paciente">
-            <field name="name">Object 3</field>
-            <field name="value">30</field>
-          </record>
+        <record id="demo_paciente_b" model="hospital.paciente">
+            <field name="name">María López</field>
+            <field name="sintomas">Cansancio extremo y mareos</field>
+        </record>
 
-          <record id="object4" model="hospital_medico_paciente.hospital_medico_paciente">
-            <field name="name">Object 4</field>
-            <field name="value">40</field>
-          </record>
--->
+        <record id="demo_diagnostico_a" model="hospital.diagnostico">
+            <field name="paciente_id" ref="demo_paciente_a"/>
+            <field name="medico_id" ref="demo_medico_a"/>
+            <field name="diagnostico">Migraña. Se recomienda descanso y analgésicos.</field>
+        </record>
+
+        <record id="demo_diagnostico_b" model="hospital.diagnostico">
+            <field name="paciente_id" ref="demo_paciente_b"/>
+            <field name="medico_id" ref="demo_medico_b"/>
+            <field name="diagnostico">Anemia leve. Suplementos de hierro y control en 1 mes.</field>
+        </record>
+
     </data>
 </odoo>

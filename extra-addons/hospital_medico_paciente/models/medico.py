@@ -8,4 +8,4 @@ class Medico(models.Model):
     name = fields.Char(string="Nombre Completo(Nombre y apellidos)", required=True)
     numero_colegiado = fields.Char(string="Número de Colegiado", required=True)
 
-    ids_diagnosticos = fields.One2many( "hospital.diagnostico", "medico_id", string="Diagnósticos Realizados")
+    ids_diagnostico = fields.One2many( "hospital.diagnostico", "medico_id", string="Diagnósticos Realizados")
