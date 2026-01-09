@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- Vistas para Paciente -->
+    <record id="hospital_medico_paciente.view_hospital_paciente_form" model="ir.ui.view">
+        <field name="name">hospital.paciente.form</field>
+        <field name="model">hospital.paciente</field>
+        <field name="arch" type="xml">
+            <form string="Paciente">
+              <sheet>
+                  <div class="oe_title">
+                      <h1>
+                          <field name="name" placeholder="Nombre del paciente"/>
+                      </h1>
+                  </div>
+                  <group>
+                    <field name="sintomas"/>
+                  </group>
+                <notebook>
+                  <page string="Diagnósticos Recibidos">
+                    <field name="ids_diagnosticos"/>
+                  </page>
+                </notebook>
+
+              </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="hospital_medico_paciente.view_hospital_paciente_list">
+      <field name="name">hospital.paciente.list</field>
+      <field name="model">hospital.paciente</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="sintomas"/>
+        </list>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="hospital_medico_paciente.action_hospital_paciente">
+      <field name="name">Pacientes</field>
+      <field name="res_model">hospital.paciente</field>
+      <field name="view_mode">list,form</field>
+    </record>
+  </data>
+</odoo>

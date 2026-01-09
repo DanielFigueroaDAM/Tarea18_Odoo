@@ -1,149 +1,23 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-    <!-- form del paciente medico hospital -->
-    <record id="hospital_medico_paciente.view_hospital_paciente_form" model="ir.ui.view">
-        <field name="name">hospital.paciente.form</field>
-        <field name="model">hospital.paciente</field>
-        <field name="arch" type="xml">
-            <form string="Paciente">
-              <sheet>
-                  <div class="oe_title">
-                      <h1>
-                          <field name="name" placeholder="Nombre del paciente"/>
-                      </h1>
-                  </div>
-                  <group>
-                    <field name="sintomas"/>
-                  </group>
-                <notebook>
-                  <page string="Diagnósticos Recibidos">
-                    <field name="ids_diagnosticos"/>
-                  </page>
-                </notebook>
-
-              </sheet>
-            </form>
-        </field>
-    </record>
-
-
-    <record model="ir.ui.view" id="hospital_medico_paciente.view_hospital_paciente_list">
-      <field name="name">hospital.paciente.list</field>
-      <field name="model">hospital.paciente</field>
-      <field name="arch" type="xml">
-        <list>
-          <field name="name"/>
-          <field name="sintomas"/>
-        </list>
-      </field>
-    </record>
-
-    <record model="ir.actions.act_window" id="hospital_medico_paciente.action_hospital_paciente">
-      <field name="name">Pacientes</field>
-      <field name="res_model">hospital.paciente</field>
-      <field name="view_mode">list,form</field>
-    </record>
-
-
-
-    <!-- Vistas, acciones y menús para Médicos y Diagnósticos -->
-
-    <!-- Medicos -->
-    <record id="hospital_medico_paciente.view_hospital_medico_form" model="ir.ui.view">
-        <field name="name">hospital.medico.form</field>
-        <field name="model">hospital.medico</field>
-        <field name="arch" type="xml">
-            <form string="Médico">
-                <sheet>
-                    <div class="oe_title">
-                        <h1>
-                            <field name="name" placeholder="Nombre del Médico"/>
-                        </h1>
-                    </div>
-                    <group>
-                        <field name="numero_colegiado"/>
-                    </group>
-                    <notebook>
-                        <page string="Pacientes Atendidos">
-                            <field name="ids_diagnosticos"/>
-                        </page>
-                    </notebook>
-                </sheet>
-            </form>
-        </field>
-    </record>
-
-    <record id="hospital_medico_paciente.view_hospital_medico_list" model="ir.ui.view">
-        <field name="name">hospital.medico.list</field>
-        <field name="model">hospital.medico</field>
-        <field name="arch" type="xml">
-            <list>
-                <field name="name"/>
-                <field name="numero_colegiado"/>
-            </list>
-        </field>
-    </record>
-
-    <record id="hospital_medico_paciente.action_hospital_medico" model="ir.actions.act_window">
-        <field name="name">Médicos</field>
-        <field name="res_model">hospital.medico</field>
-        <field name="view_mode">list,form</field>
-    </record>
-
-    <!-- diagnosticos -->
-    <record id="hospital_medico_paciente.view_hospital_diagnostico_form" model="ir.ui.view">
-        <field name="name">hospital.diagnostico.form</field>
-        <field name="model">hospital.diagnostico</field>
-        <field name="arch" type="xml">
-            <form string="Diagnóstico">
-                <sheet>
-                    <group>
-                        <group>
-                            <field name="paciente_id"/>
-                            <field name="medico_id"/>
-                        </group>
-                        <group>
-                            <field name="diagnostico"/>
-                        </group>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
-
-    <record id="hospital_medico_paciente.view_hospital_diagnostico_list" model="ir.ui.view">
-        <field name="name">hospital.diagnostico.list</field>
-        <field name="model">hospital.diagnostico</field>
-        <field name="arch" type="xml">
-            <list>
-                <field name="paciente_id"/>
-                <field name="medico_id"/>
-                <field name="diagnostico"/>
-            </list>
-        </field>
-    </record>
-
-    <record id="hospital_medico_paciente.action_hospital_diagnostico" model="ir.actions.act_window">
-        <field name="name">Diagnósticos</field>
-        <field name="res_model">hospital.diagnostico</field>
-        <field name="view_mode">list,form</field>
-    </record>
-
+    <!-- Menú raíz -->
     <menuitem name="Gestión Hospital" id="hospital_medico_paciente.menu_hospital_root"/>
 
+    <!-- Menú para Pacientes -->
     <menuitem name="Pacientes"
               id="hospital_medico_paciente.menu_hospital_paciente"
               parent="hospital_medico_paciente.menu_hospital_root"
               action="hospital_medico_paciente.action_hospital_paciente"
               sequence="10"/>
 
+    <!-- Menú para Médicos -->
     <menuitem name="Médicos"
               id="hospital_medico_paciente.menu_hospital_medico"
               parent="hospital_medico_paciente.menu_hospital_root"
               action="hospital_medico_paciente.action_hospital_medico"
               sequence="20"/>
 
+    <!-- Menú para Diagnósticos -->
     <menuitem name="Diagnósticos"
               id="hospital_medico_paciente.menu_hospital_diagnostico"
               parent="hospital_medico_paciente.menu_hospital_root"

@@ -23,6 +23,9 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'views/paciente_views.xml',
+        'views/medico_views.xml',
+        'views/diagnostico_views.xml',
         'views/views.xml',
         'views/templates.xml',
         'demo/demo.xml'
