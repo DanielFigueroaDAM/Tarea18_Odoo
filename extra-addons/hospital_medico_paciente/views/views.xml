@@ -2,24 +2,23 @@
   <data>
     <!-- explicit list view definition -->
     <!-- form del paciente medico hospital -->
-    <record id="view_hospital_medico_paciente_form" model="ir.ui.view">
-        <field name="name">hospital.medico.paciente.form</field>
-        <field name="model">hospital_medico_paciente.hospital_medico_paciente</field>
+    <record id="hospital_medico_paciente.view_hospital_paciente_form" model="ir.ui.view">
+        <field name="name">hospital.paciente.form</field>
+        <field name="model">hospital.paciente</field>
         <field name="arch" type="xml">
-            <form string="Hospital Medico Paciente Form">
+            <form string="Paciente">
               <sheet>
+                  <div class="oe_title">
+                      <h1>
+                          <field name="name" placeholder="Nombre del paciente"/>
+                      </h1>
+                  </div>
                   <group>
-                    <field name="name" placeholder="Nombre del paciente" />
                     <field name="sintomas"/>
                   </group>
                 <notebook>
-                  <page string="Historial Clinico">
-                    <field name="ids_diagnostico">
-                      <list editable="bottom">
-                        <field name="medico_id"/>
-                        <field name="diagnostico"/>
-                      </list>
-                    </field>
+                  <page string="Diagnósticos Recibidos">
+                    <field name="ids_diagnosticos"/>
                   </page>
                 </notebook>
 
@@ -29,9 +28,9 @@
     </record>
 
 
-    <record model="ir.ui.view" id="hospital_medico_paciente.list">
-      <field name="name">hospital_medico_paciente list</field>
-      <field name="model">hospital_medico_paciente.hospital_medico_paciente</field>
+    <record model="ir.ui.view" id="hospital_medico_paciente.view_hospital_paciente_list">
+      <field name="name">hospital.paciente.list</field>
+      <field name="model">hospital.paciente</field>
       <field name="arch" type="xml">
         <list>
           <field name="name"/>
@@ -40,14 +39,11 @@
       </field>
     </record>
 
-
-    <!-- actions opening views on models -->
-    <record model="ir.actions.act_window" id="hospital_medico_paciente.action_window">
-      <field name="name">hospital_medico_paciente window</field>
-      <field name="res_model">hospital_medico_paciente.hospital_medico_paciente</field>
+    <record model="ir.actions.act_window" id="hospital_medico_paciente.action_hospital_paciente">
+      <field name="name">Pacientes</field>
+      <field name="res_model">hospital.paciente</field>
       <field name="view_mode">list,form</field>
     </record>
-
 
 
 
@@ -70,12 +66,7 @@
                     </group>
                     <notebook>
                         <page string="Pacientes Atendidos">
-                            <field name="ids_diagnosticos">
-                                <tree editable="bottom">
-                                    <field name="paciente_id"/>
-                                    <field name="diagnostico"/>
-                                </tree>
-                            </field>
+                            <field name="ids_diagnosticos"/>
                         </page>
                     </notebook>
                 </sheet>
@@ -87,10 +78,10 @@
         <field name="name">hospital.medico.list</field>
         <field name="model">hospital.medico</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="name"/>
                 <field name="numero_colegiado"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -100,7 +91,7 @@
         <field name="view_mode">list,form</field>
     </record>
 
-    <!-- diagnostico -->
+    <!-- diagnosticos -->
     <record id="hospital_medico_paciente.view_hospital_diagnostico_form" model="ir.ui.view">
         <field name="name">hospital.diagnostico.form</field>
         <field name="model">hospital.diagnostico</field>
@@ -125,11 +116,11 @@
         <field name="name">hospital.diagnostico.list</field>
         <field name="model">hospital.diagnostico</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="paciente_id"/>
                 <field name="medico_id"/>
                 <field name="diagnostico"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -144,7 +135,7 @@
     <menuitem name="Pacientes"
               id="hospital_medico_paciente.menu_hospital_paciente"
               parent="hospital_medico_paciente.menu_hospital_root"
-              action="hospital_medico_paciente.action_window"
+              action="hospital_medico_paciente.action_hospital_paciente"
               sequence="10"/>
 
     <menuitem name="Médicos"
